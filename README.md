@@ -50,5 +50,33 @@ php app/console doctrine:fixtures:load
 php app/console fos:user:create
 ```
 
+API
+--------------
+### 1. Send SMS ###
+
+```
+curl --data "number=+31972123456&text=This is API SMS test" http://smsd.local/api/sms
+```
+
+### 2. Read Inbox ###
+
+```
+/api/inboxes
+```
+
+```
+/api/inbox/8
+```
+
+### 3. Read Outbox ###
+
+```
+/api/outboxes
+```
+
+```
+/api/outbox/8
+```
+
 [1]:  http://wiki.gnokii.org/index.php/SMSD
 [2]:  https://github.com/symfony/symfony
