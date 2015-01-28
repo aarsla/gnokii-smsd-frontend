@@ -11,9 +11,9 @@ gnokii-smsd installed on the same host (update parameters.yml database name/user
 Screenshots
 --------------
 
-![sshot-1](https://github.com/aarsla/doc/screenshot-1.png)
+![sshot-1](https://raw.githubusercontent.com/aarsla/gnokii-smsd-frontend/master/doc/screenshot-1.png)
 
-![sshot-2](https://github.com/aarsla/doc/screenshot-2.png)
+![sshot-2](https://raw.githubusercontent.com/aarsla/gnokii-smsd-frontend/master/doc/screenshot-2.png)
 
 Installation
 --------------
