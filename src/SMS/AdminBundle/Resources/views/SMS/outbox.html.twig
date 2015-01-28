@@ -1,0 +1,64 @@
+{% extends 'SMSAdminBundle::layout.html.twig' %}
+
+{% block pagetitle %}
+<div class="page-header">
+	<h1><i class="fa fa-envelope-o"></i> Outbox
+	<div class="pull-right">
+	    <button class="btn btn-sm btn-default" type="button" data-toggle="collapse" data-target="#search-filter">
+		  Search <i class="fa fa-caret-down"></i>
+		</button>
+	</div>
+	</h1>
+</div>
+{% endblock %}
+
+{% block body %}
+
+{% include 'SMSAdminBundle:SMS:filter-outbox.html.twig' %}
+	
+	<table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Number</th>
+                <th>Processed Date</th>
+                <th>Insert Date</th>
+                <th>Text</th>
+                <th>Phone</th>
+                <th>Processed</th>
+                <th>Error</th>
+                <th>DReport</th>
+                <th>Not Before</th>
+                <th>Not After</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.number }}</td>
+                <td>{{ entity.processedDate is empty or entity.processedDate == date('0000-00-00') ? "" : entity.processedDate|date('d.m.Y. H:i:s') }}</td>
+                <td>{{ entity.insertdate is empty ? "" : entity.insertdate|date('d.m.Y. H:i:s') }}</td>
+                <td>{{ entity.text }}</td>
+                <td>{{ entity.phone }}</td>
+                <td class="text-center">
+                	{{ entity.processed ? ' <i class="fa font-xl text-success fa-check-circle-o"></i>'|raw : ' <i class="fa font-xl text-danger fa-dot-circle-o"></i>'|raw }}
+                </td>
+                <td>{{ entity.error }}</td>
+                <td>{{ entity.dreport }}</td>
+                <td>{% if entity.notBefore %}{{ entity.notBefore|date('H:i:s') }}{% endif %}</td>
+                <td>{% if entity.notAfter %}{{ entity.notAfter|date('H:i:s') }}{% endif %}</td>
+                <td>
+                	<a class="btn btn-sm btn-danger {{ entity.processed ? 'disabled' }}" href="{{ path('admin_sms_delete', { 'id': entity.id }) }}" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="well well-sm text-center">
+    	{{ knp_pagination_render(pagination, 'SMSAdminBundle:Pagination:bootstrap.html.twig') }}
+    </div>
+
+{% endblock %}

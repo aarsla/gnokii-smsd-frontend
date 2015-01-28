@@ -1,0 +1,12 @@
+{% extends 'SMSAdminBundle::layout.html.twig' %}
+
+{% block pagetitle %}
+<div class="page-header">
+	<h1><i class="fa fa-exclamation-circle"></i> Welcome
+	</h1>
+</div>
+{% endblock %}
+
+{% block body %}
+	<p class="lead">Please <a href="{{ path('fos_user_security_login') }}">sign in</a> to use the application.</p>
+{% endblock %}

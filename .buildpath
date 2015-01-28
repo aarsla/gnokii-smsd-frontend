@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="app"/>
+	<buildpathentry kind="src" path="bin"/>
+	<buildpathentry kind="src" path="src/SMS/AdminBundle"/>
+	<buildpathentry kind="src" path="src/SMS/ApiBundle"/>
+	<buildpathentry kind="src" path="src/SMS/FrontBundle"/>
+	<buildpathentry kind="src" path="src/SMS/UserBundle"/>
+	<buildpathentry kind="src" path="vendor"/>
+	<buildpathentry kind="src" path="web"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>

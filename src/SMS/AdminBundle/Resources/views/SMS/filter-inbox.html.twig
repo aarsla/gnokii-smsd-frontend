@@ -1,0 +1,37 @@
+{% form_theme form 'SMSAdminBundle:Form:fields.html.twig' %}
+
+<div class="collapse" id="search-filter">
+
+<!-- widget content -->
+<div class="well">
+	<form method="get" action="{{ path('admin_sms_inbox') }}">
+	<fieldset>
+		<div class="col-sm-6">
+			{{ form_row(form.number) }}
+		</div>
+		<div class="col-sm-6">
+			{{ form_row(form.text) }}
+		</div>
+		{{ form_row(form.insertdate) }}
+	</fieldset>
+	
+	<fieldset>
+		{{ form_rest(form) }}
+	</fieldset>
+
+	<div class="vspace">
+	</div>
+	
+	<div class="form-actions">
+		<footer class="col-xs-2 pull-right">
+			<input type="submit" value="Reset" class="btn btn-sm btn-danger" />
+			<input type="submit" name="submit-filter" value="Search" class="btn btn-sm btn-primary" />
+		</footer>
+		<div class="clearfix"></div>
+	</div>
+	</form>
+					
+</div>
+<!-- end widget content -->
+
+</div>

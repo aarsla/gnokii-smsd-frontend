@@ -1,0 +1,43 @@
+{% extends 'SMSAdminBundle::layout.html.twig' %}
+
+{% block pagetitle %}
+<div class="page-header">
+	<h1><i class="fa fa-envelope-o"></i> Send SMS</h1>
+</div>
+{% endblock %}
+
+{% block body -%}
+
+<div class="swell">
+
+		<!-- form content -->
+		<div class="swell">
+			<form action="{{ path('admin_sms_create') }}" method="post" {{ form_enctype(form) }} novalidate>
+				<fieldset>
+					{% for flashMessage in app.session.flashbag.get('error') %}
+					<div class="alert alert-danger fade in">
+						<button class="close" data-dismiss="alert">×</button>
+						<i class="fa-fw fa fa-times"></i> <strong>{{ 'admin.flash.status.error'|trans }}</strong> {{ flashMessage }}
+					</div>
+					{% endfor %}
+				</fieldset>
+
+
+	
+				<fieldset>
+					{{ form_rest(form) }}
+				</fieldset>
+
+				<div class="form-actions">
+					<footer class="col-xs-2 pull-right">
+						<a class="btn btn-default btn-sm" href="{{ path('admin_welcome') }}">Cancel</a>
+						<button type="submit" class="btn btn-primary">Send SMS</button>
+					</footer>
+				</div>
+			</form>
+		</div>
+		<!-- end form content -->
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% block filter_datetime_range_widget %}
+    <div class="filter-date-range">
+        <div class="col-sm-6 filter-date-range-left">
+            {{ form_label(form.left_datetime) }}
+            {{ form_widget(form.left_datetime, {'attr': attr}) }}
+        </div>
+        <div class="col-sm-6 filter-date-range-right">
+            {{ form_label(form.right_datetime) }}
+            {{ form_widget(form.right_datetime, {'attr': attr}) }}
+        </div>
+    </div>
+{% endblock filter_datetime_range_widget %}

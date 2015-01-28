@@ -1,0 +1,50 @@
+{% extends 'SMSAdminBundle::layout.html.twig' %}
+
+{% block pagetitle %}
+<div class="page-header">
+	<h1><i class="fa fa-question-circle"></i> Help</h1>
+</div>
+{% endblock %}
+
+{% block body %}
+
+<h2>SMSD</h2>
+<p>SMSD periodically checks 'inbox' and 'outbox' tables. Database is checked every 1 second by default. Once the unprocessed message is found in 'outbox' table SMSD will send it and mark as processed.</p>
+
+<h2>Sending messages</h2>
+
+<p>You can use <a href="{{ path('admin_sms_new') }}">this web form</a> or a plain mysql insert query:</p>
+<pre>insert into outbox (number,text) values('+31972123456', 'Testing Testing everyone');</pre>
+
+<h2>API</h2>
+<p>If you need to allow external services to send SMS messages through SMSD use the following API.</p>
+<p>You can extend API url with required format (.json is default), i.e. .xml</p>
+
+<h3>Send SMS</h3>
+<pre>curl --data "number=+31972123456&text=This is API SMS test" http://smsd.local/api/sms</pre>
+<pre>
+{
+
+    "message":
+
+    {
+        "id": 8,
+        "number": "31972123456",
+        "processed_date": "2015-01-27T13:28:53+0100",
+        "insertdate": "2015-01-27T13:28:53+0100",
+        "text": "This is API SMS test",
+        "processed": 0
+    }
+
+}
+</pre>
+
+<h3>Inbox</h3>
+<pre>/api/inboxes</pre>
+<pre>/api/inbox/1</pre>
+
+<h3>Outbox</h3>
+<pre>/api/outboxes</pre>
+<pre>/api/outbox/1</pre>
+
+{% endblock %}

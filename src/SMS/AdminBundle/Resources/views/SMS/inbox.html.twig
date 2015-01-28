@@ -1,0 +1,53 @@
+{% extends 'SMSAdminBundle::layout.html.twig' %}
+
+{% block pagetitle %}
+<div class="page-header">
+	<h1><i class="fa fa-envelope-o"></i> Inbox
+	<div class="pull-right">
+	    <button class="btn btn-sm btn-default" type="button" data-toggle="collapse" data-target="#search-filter">
+		  Search <i class="fa fa-caret-down"></i>
+		</button>
+	</div>
+	</h1>
+</div>
+{% endblock %}
+
+{% block body %}
+
+{% include 'SMSAdminBundle:SMS:filter-inbox.html.twig' %}
+
+	<table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Number</th>
+                <th>Date</th>
+                <th>Insert Date</th>
+                <th>Text</th>
+                <th>Phone</th>
+                <th>Processed</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.number }}</td>
+                <td>{{ entity.smsdate is empty ? "" : entity.smsdate|date('d.m.Y. H:i:s') }}</td>
+                <td>{{ entity.insertdate == date('0000-00-00') ? "" : entity.insertdate|date('d.m.Y. H:i:s') }}</td>
+                <td>{{ entity.text }}</td>
+                <td>{{ entity.phone }}</td>
+                <td class="text-center">
+                	{{ entity.processed ? ' <i class="fa font-xl text-success fa-check-circle-o"></i>'|raw : ' <i class="fa font-xl text-danger fa-dot-circle-o"></i>'|raw }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="well well-sm well-light text-center">
+    	{{ knp_pagination_render(pagination, 'SMSAdminBundle:Pagination:bootstrap.html.twig') }}
+    </div>
+
+
+{% endblock %}

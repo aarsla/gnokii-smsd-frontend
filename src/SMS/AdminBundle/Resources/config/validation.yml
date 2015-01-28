@@ -1,0 +1,12 @@
+SMS\AdminBundle\Entity\SMS:
+    properties:
+        number:
+            - NotBlank: ~
+            - Length:
+                min: 3
+                max: 15
+        text:
+            - NotBlank: ~
+            - Length:
+                min: 1
+                max: 140
