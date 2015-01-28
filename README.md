@@ -8,6 +8,13 @@ Requirements
 
 gnokii-smsd installed on the same host (update parameters.yml database name/user accordingly)
 
+Screenshots
+--------------
+
+![sshot-1](https://github.com/aarsla/doc/screenshot-1.png)
+
+![sshot-2](https://github.com/aarsla/doc/screenshot-2.png)
+
 Installation
 --------------
 
